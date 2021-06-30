@@ -30,7 +30,12 @@ function createEmployee(personalInfo, associatedWith) {
 }
 
 function isManager(id) {
-  // seu código aqui
+  const arrayManagers = [];
+  data.employees.forEach((colab) => {
+    const man = colab.managers;
+    arrayManagers.push(...man);
+  });
+  return arrayManagers.some((manager) => manager === id);
 }
 
 function addEmployee(id, firstName, lastName, managers, responsibleFor) {

@@ -94,7 +94,12 @@ function getSchedule(dayName) {
 /* console.log(getSchedule('Tuesday')); */
 
 function getOldestFromFirstSpecies(id) {
-  // seu código aqui
+  const colab = data.employees.find((employee) => employee.id === id);
+  const animalFirst = colab.responsibleFor[0];
+  const animal = data.species.find((specie) => specie.id === animalFirst);
+  const achado = animal.residents.sort((animal1, animal2) => animal1.age - animal2.age)
+    .reverse()[0];
+  return Object.values(achado);
 }
 
 function increasePrices(percentage) {

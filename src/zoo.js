@@ -91,7 +91,6 @@ function getSchedule(dayName) {
   const achado = arrayHour.find((day) => day[0] === dayName);
   return { [achado[0]]: achado[1] };
 }
-/* console.log(getSchedule('Tuesday')); */
 
 function getOldestFromFirstSpecies(id) {
   const colab = data.employees.find((employee) => employee.id === id);
@@ -103,7 +102,10 @@ function getOldestFromFirstSpecies(id) {
 }
 
 function increasePrices(percentage) {
-  // seu código aqui
+  data.prices.Adult = Math.ceil(data.prices.Adult * (percentage + 100)) / 100;
+  data.prices.Child = Math.ceil(data.prices.Child * (percentage + 100)) / 100;
+  data.prices.Senior = Math.ceil(data.prices.Senior * (percentage + 100)) / 100;
+  return data.prices;
 }
 
 function getEmployeeCoverage(idOrName) {

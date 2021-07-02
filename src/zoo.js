@@ -72,9 +72,26 @@ function getAnimalMap(options) {
   // seu código aqui
 }
 
+const arrayCron = Object.entries(data.hours);
+const cronogramaRet = {};
+arrayCron.map((day) => {
+  if (day[0] === 'Monday') {
+    return Object.assign(cronogramaRet, { [day[0]]: 'CLOSED' });
+  }
+  return Object.assign(cronogramaRet, {
+    [day[0]]: `Open from ${day[1].open}am until ${day[1].close - 12}pm`,
+  });
+});
+
 function getSchedule(dayName) {
-  // seu código aqui
+  if (dayName === undefined) {
+    return cronogramaRet;
+  }
+  const arrayHour = Object.entries(cronogramaRet);
+  const achado = arrayHour.find((day) => day[0] === dayName);
+  return { [achado[0]]: achado[1] };
 }
+/* console.log(getSchedule('Tuesday')); */
 
 function getOldestFromFirstSpecies(id) {
   // seu código aqui
